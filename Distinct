@@ -1,0 +1,20 @@
+## If you specify one column, the DISTINCT clause will evaluate the uniqueness of rows based on the values of that column.
+
+order of execution -> [ from -> where -> select -> distinct -> order by]
+ ===========================================================
+ SELECT 
+    DISTINCT lastname
+FROM
+    employees
+ORDER BY 
+    lastname;
+=============================================================
+
+
+## MySQL DISTINCT and NULL values When you specify a column that has NULL values in the DISTINCT clause,
+the DISTINCT clause will keep only one NULL value because it considers all NULL values are the same.
+
+
+##MySQL DISTINCT with multiple columns
+When you specify multiple columns in the DISTINCT clause, the DISTINCT clause will use the combination of values in these
+columns to determine the uniqueness of the row in the result set.
