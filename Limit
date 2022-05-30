@@ -1,0 +1,34 @@
+#####The LIMIT clause is used in the SELECT statement to constrain the number of rows to return.
+The LIMIT clause accepts one or two arguments. The values of both arguments must be zero or positive integers.
+
+/////////////////////////////////////////////////////////////////////////////////////
+SELECT 
+    select_list
+FROM
+    table_name
+LIMIT [offset,] row_count;
+In this syntax:
+The offset specifies the offset of the first row to return. The offset of the first row is 0, not 1.
+The row_count specifies the maximum number of rows to return.
+////////////////////////////////////////////////////////////////////////////////////
+LIMIT row_count and  LIMIT 0 , row_count are same..
+
+//////////////////////////////////////////////////////////////
+SELECT 
+    select_list
+FROM 
+    table_name
+ORDER BY 
+    sort_expression
+LIMIT offset, row_count;
+///////////////////////////////////////////////////////////
+3) Using MySQL LIMIT to get the nth highest or lowest value
+To get the nth highest or lowest value, you use the following LIMIT clause:
+///////////////////////////////////
+SELECT select_list
+FROM table_name
+ORDER BY sort_expression
+LIMIT n-1, 1;
+//////////////////////////////////
+Summary
+Use the MySQL LIMIT clause to constrain the number of rows returned by the SELECT statement.
