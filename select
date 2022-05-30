@@ -1,0 +1,49 @@
+#####----SELECT----###### 
+The SELECT statement allows you to select data from one or more tables. To write a SELECT statement in MySQL, you use this syntax:
+
+-------------------------
+SELECT select_list
+FROM table_name;
+------------------------
+
+->TO print whole table
+------------------------
+SELECT * 
+FROM employees;
+-------------------------
+
+->To print particular columns
+-------------------------
+SELECT 
+    lastName, 
+    firstName, 
+    jobTitle
+FROM
+    employees;
+--------------------------
+
+--------------------------------------------
+### order of execution =>>>>> From -> select
+--------------------------------------------
+
+Summary
+Use the SELECT statement to select data from a table.
+Use the SELECT * to select data from all columns of a table.
+
+###################################################################Querying data#############################################################################################
+
+MySQL doesn’t require the FROM clause. It means that you can have a SELECT statement without the FROM clause like this:
+
+-------------------------
+SELECT select_list;
+---------------------------
+Here’s a trivial example:
+-------------
+SELECT 1 + 1;
+---------------
++-------+
+| 1 + 1 |
++-------+
+|     2 |
++-------+
+1 row in set (0.00 sec)   
