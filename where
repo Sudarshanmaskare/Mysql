@@ -1,0 +1,43 @@
+##############################################################----- Filtering data-----#########################################################################
+---------------------------
+SELECT 
+    select_list
+FROM
+    table_name
+WHERE
+    search_condition;
+---------------------------
+
+************ order of execution =>>> from -> where -> select -> order by****************
+
+
+-------------------------------
+SELECT 
+    lastName, 
+    firstName, 
+    jobTitle, 
+    officeCode
+FROM
+    employees
+WHERE
+    jobtitle = 'Sales Rep' OR 
+    officeCode = 1
+ORDER BY 
+    officeCode , 
+    jobTitle;
+    
+Also we can use below queries 
+-------------------------------
+WHERE
+    officeCode BETWEEN 1 AND 3
+WHERE
+    lastName LIKE '%son'
+WHERE
+    officeCode IN (1 , 2, 3)
+<> or !=	Not equal to
+
+Summary
+Use the WHERE clause to filter rows by a condition.
+MySQL evaluates the WHERE clause after the FROM clause and before the SELECT and ORDER BY clauses.
+---------------------------------
+##############################################################################################################################################
