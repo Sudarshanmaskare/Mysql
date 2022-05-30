@@ -40,3 +40,32 @@ FROM
 WHERE
     country = 'USA' OR country = 'France';
 ==================================
+##### Between
+SELECT 
+    productCode, 
+    productName, 
+    buyPrice
+FROM
+    products
+WHERE
+    buyPrice BETWEEN 90 AND 100;
+==================================
+### Not Between
+SELECT 
+    productCode, 
+    productName, 
+    buyPrice
+FROM
+    products
+WHERE
+    buyPrice NOT BETWEEN 20 AND 100;
+=================================
+### Like 
+The percentage ( % ) wildcard matches any string of zero or more characters.
+The underscore ( _ ) wildcard matches any single character.
+Summary
+Use the LIKE operator to test if a value matches a pattern.
+The % wildcard matches zero or more characters.
+The _ wildcard matches a single character.
+Use ESCAPE clause specifies an escape character other than the default escape character (\).
+Use the NOT operator to negate the LIKE operator.
