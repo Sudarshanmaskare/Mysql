@@ -1,0 +1,38 @@
+order of exeecution
+-----------------------------------------------------------------------------------------------------------------
+From -> Where -> Goup by -> Select -> distinct -> order by -> limit
+------------------------------------------------------------------------------------------------------------------
+SELECT 
+    status, COUNT(*)
+FROM
+    orders
+GROUP BY status;
+
+
+SELECT 
+    status, 
+    SUM(quantityOrdered * priceEach) AS amount
+FROM
+    orders
+INNER JOIN orderdetails 
+    USING (orderNumber)
+GROUP BY 
+    status;
+    
+ --having   
+ SELECT 
+    YEAR(orderDate) AS year,
+    SUM(quantityOrdered * priceEach) AS total
+FROM
+    orders
+INNER JOIN orderdetails 
+    USING (orderNumber)
+WHERE
+    status = 'Shipped'
+GROUP BY 
+    year
+HAVING 
+    year > 2003;
+ /////////////////////////////////
+ Generally speaking, the DISTINCT clause is a special case of the GROUP BY clause.
+ The difference between DISTINCT clause and GROUP BY clause is that the GROUP BY clause sorts the result set, whereas the DISTINCT clause does not.
