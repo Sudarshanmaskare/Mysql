@@ -1,0 +1,16 @@
+**********************The dual table********************
+Sometimes, you still need to use the FROM clause but you don’t want to reference any actual table. In this case, you can use the dual table in the FROM clause:
+
+-----------------------
+SELECT select_list
+FROM dual;
+-----------------------
+**************Column alias****************
+---------------------------------
+SELECT expression AS column_alias;
+----------------------------------
+
+Summary:
+MySQL SELECT statement doesn’t require the FROM clause
+Use the dual table if you want to use the FROM clause but don’t want to reference a table.
+Assign an alias to a column to make it more readable.
