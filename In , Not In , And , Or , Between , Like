@@ -1,0 +1,42 @@
+===================================
+### AND
+SELECT 
+    customername, 
+    country, 
+    state
+FROM
+    customers
+WHERE
+    country = 'USA' AND 
+    state = 'CA';
+=================================
+### OR
+SELECT    
+	customername, 
+	country
+FROM    
+	customers
+WHERE country = 'USA' OR 
+      country = 'France';
+ ===============================
+### IN
+SELECT 
+    officeCode, 
+    city, 
+    phone, 
+    country
+FROM
+    offices
+WHERE
+    country IN ('USA' , 'France');
+================================
+### Or
+SELECT 
+    officeCode, 
+    city, 
+    phone
+FROM
+    offices
+WHERE
+    country = 'USA' OR country = 'France';
+==================================
