@@ -1,0 +1,119 @@
+A relational database consists of multiple related tables linking together using common columns, which are known as foreign key columns. 
+Because of this, data in each table is incomplete from the business perspective.
+
+
+A join is a method of linking data between one (self-join) or more tables based on values of the common column between the tables.
+
+
+
+CREATE TABLE members (
+    member_id INT AUTO_INCREMENT,
+    name VARCHAR(100),
+    PRIMARY KEY (member_id)
+);
+
+CREATE TABLE committees (
+    committee_id INT AUTO_INCREMENT,
+    name VARCHAR(100),
+    PRIMARY KEY (committee_id)
+);
+
+INSERT INTO members(name)
+VALUES('John'),('Jane'),('Mary'),('David'),('Amelia');
+
+INSERT INTO committees(name)
+VALUES('John'),('Mary'),('Amelia'),('Joe');
+
+
+/////////////////////////////-------------------INNER JOIN--------------------------
+SELECT column_list
+FROM table_1
+INNER JOIN table_2 ON join_condition;
+
+The inner join clause joins two tables based on a condition which is known as a join predicate.
+
+The inner join clause compares each row from the first table with every row from the second table.
+
+If values from both rows satisfy the join condition, the inner join clause creates a new row whose column contains all 
+columns of the two rows from both tables and includes this new row in the result set. In other words, the inner join clause includes 
+only matching rows from both tables.
+
+If the join condition uses the equality operator (=) and the column names in both tables used for matching are the same, 
+and you can use the USING clause instead:
+
+SELECT 
+    m.member_id, 
+    m.name AS member, 
+    c.committee_id, 
+    c.name AS committee
+FROM
+    members m
+INNER JOIN committees c ON c.name = m.name;
+
+SELECT 
+    m.member_id, 
+    m.name AS member, 
+    c.committee_id, 
+    c.name AS committee
+FROM
+    members m
+INNER JOIN committees c USING(name);
+///////////////////////////////////////////----------------LEFT JOIN--------------------
+If the values in the two rows satisfy the join condition, the left join clause creates a new row whose columns contain all columns of the rows in
+both tables and includes this row in the result set.
+
+If the values in the two rows are not matched, the left join clause still creates a new row whose columns contain columns of the row
+in the left table and NULL for columns of the row in the right table.
+
+
+SELECT 
+    m.member_id, 
+    m.name AS member, 
+    c.committee_id, 
+    c.name AS committee
+FROM
+    members m
+LEFT JOIN committees c USING(name);
+---
+SELECT 
+    m.member_id, 
+    m.name AS member, 
+    c.committee_id, 
+    c.name AS committee
+FROM
+    members m
+LEFT JOIN committees c USING(name)
+WHERE c.committee_id IS NULL;
+///////////////////////////////////////////////////////////////////
+
+Cross join
+
+MySQL CROSS JOIN clause
+Unlike the inner join, left join, and right join, the cross join clause does not have a join condition.
+
+The cross join makes a Cartesian product of rows from the joined tables. The cross join combines each row from the 
+first table with every row from the right table to make the result set.
+
+Suppose the first table has n rows and the second table has m rows. The cross join that joins the tables will return nxm rows.
+
+The following shows the syntax of the cross join clause:
+
+SELECT 
+    m.member_id, 
+    m.name AS member, 
+    c.committee_id, 
+    c.name AS committee
+FROM
+    members m
+CROSS JOIN committees c;
+////////////////////////////////////////////////////////////////////////////---self join----------//////////////////////////
+SELECT 
+    CONCAT(m.lastName, ', ', m.firstName) AS Manager,
+    CONCAT(e.lastName, ', ', e.firstName) AS 'Direct report'
+FROM
+    employees e
+INNER JOIN employees m ON 
+    m.employeeNumber = e.reportsTo
+ORDER BY 
+    Manager;
+
